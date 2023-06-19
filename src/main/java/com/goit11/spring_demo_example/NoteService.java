@@ -5,38 +5,34 @@ import java.util.List;
 
 @Service
 public class NoteService {
-    private final List<Note>notes = new ArrayList<>();
-        public List<Note> addNotes(){
-        Note note1 = new Note();
-        note1.setId(1L);
-        note1.setTitle("Movie");
-        note1.setContent("This is Sparta");
-        notes.add(note1);
-        return notes;
-        }
-        public void allNotes(){
+    private final List<Note> notes = new ArrayList<>();
+
+    public Note addNotes(Note note) {
+        notes.add(note);
+        return note;
+    }
+    public void allNotes() {
         List<Note> noteList = new ArrayList<>();
-        if(!notes.isEmpty()){
-            for(Note s: notes) {
+        if (!notes.isEmpty()) {
+            for (Note s : notes) {
                 noteList.add(s);
             }
             System.out.println(noteList);
-            }else {
+        } else {
             System.out.println("List is empty");
         }
-        }
-        public void deleteById(long id) throws NoteIdException {
-            for (Note note : notes) {
-                if (note.getId() == id) {
-                    notes.remove(note);
-                    System.out.println("Employee deleted");
-                    return;
+    }
+    public void deleteById(long id) throws NoteIdException {
+        for (Note note : notes) {
+            if (note.getId() == id) {
+                notes.remove(note);
+                System.out.println("Employee id " + id +" deleted");
+                return;
                 }
-            }
-            throw new NoteIdException("Employee id not found");
         }
-
-        public void update(Note note) throws NoteIdException{
+        throw new NoteIdException("Employee id " + id + " not found");
+    }
+    public void update(Note note) throws NoteIdException{
         for(Note s: notes){
             if(s.getId()==note.getId()){
                 s.setTitle(note.getTitle());
@@ -44,15 +40,14 @@ public class NoteService {
                 return;
             }
         }
-        throw new NoteIdException("Employee id not found");
+        throw new NoteIdException("Old employee with id " + note.getId() + " not found");
     }
-
-        public Note getById(long id) throws NoteIdException {
-                for(Note s: notes){
-                    if(s.getId()==id){
-                        return s;
-                    }
-                }
-                throw new NoteIdException("Employee id not found");
+    public Note getById(long id) throws NoteIdException {
+        for(Note s: notes){
+            if(s.getId()==id){
+                return s;
             }
         }
+        throw new NoteIdException("Employee id " + id + " not found");
+    }
+}
