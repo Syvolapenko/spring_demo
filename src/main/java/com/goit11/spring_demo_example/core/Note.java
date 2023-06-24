@@ -1,4 +1,4 @@
-package com.goit11.spring_demo_example;
+package com.goit11.spring_demo_example.core;
 
 import lombok.Data;
 

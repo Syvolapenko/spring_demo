@@ -1,4 +1,4 @@
-package com.goit11.spring_demo_example;
+package com.goit11.spring_demo_example.core;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
@@ -6,21 +6,18 @@ import java.util.List;
 @Service
 public class NoteService {
     private final List<Note> notes = new ArrayList<>();
-
     public Note addNotes(Note note) {
+        final int max = 100;
+        long number = (long) (Math.random()*max+1);
+        note.setId(number);
         notes.add(note);
         return note;
     }
-    public void allNotes() {
-        List<Note> noteList = new ArrayList<>();
-        if (!notes.isEmpty()) {
-            for (Note s : notes) {
-                noteList.add(s);
-            }
-            System.out.println(noteList);
-        } else {
-            System.out.println("List is empty");
+    public List<Note> listAll() {
+        if(!notes.isEmpty()) {
+            return notes;
         }
+        return null;
     }
     public void deleteById(long id) throws NoteIdException {
         for (Note note : notes) {
