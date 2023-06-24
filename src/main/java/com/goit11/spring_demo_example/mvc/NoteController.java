@@ -47,6 +47,22 @@ public class NoteController {
         noteService.deleteById(id);
         return "redirect:/note/list";
     }
-//    @GetMapping("/edit/{id}")
-//    public String editNote(@)
+    @GetMapping("/edit")
+    public String editNote(Model model){
+        List<Note> notes = noteService.listAll();
+        model.addAttribute("notes",notes);
+        return "note-list-edit";
+    }
+    @GetMapping("/edit/{id}")
+    public String updateform(@PathVariable("id") Long id,Model model) throws NoteIdException {
+        Note note = noteService.getById(id);
+        model.addAttribute("notes",note);
+        return"note-list-update";
+    }
+    @PostMapping("/editlist")
+    public String updateNote(Note note) throws NoteIdException {
+        noteService.update(note);
+        return "redirect:/note/list";
+    }
+
 }
