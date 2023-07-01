@@ -1,17 +1,13 @@
 package com.goit11.spring_demo_example.mvc;
 
 import com.goit11.spring_demo_example.Note.*;
-import com.goit11.spring_demo_example.dto.DeleteNoteResponse;
 import com.goit11.spring_demo_example.dto.NoteDTO;
-import com.goit11.spring_demo_example.dto.SaveNoteResponse;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller
@@ -86,9 +82,8 @@ public class NoteController {
     }
     @PostMapping("/editlist")
     public String updateNote(@ModelAttribute("notes") NoteDTO noteDTO) throws NoteIdException {
-        noteService.update(noteDTO);
         Note note = NoteDTO.fromDto(noteDTO);
-        noteService.save(note);
+        noteService.update(note);
         return "redirect:/note/list";
     }
     }

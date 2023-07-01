@@ -39,16 +39,7 @@ public class NoteService {
         }
         return note;
     }
-    public NoteDTO update(NoteDTO noteDTO) throws NoteIdException{
-        List<NoteDTO> dtos = findAll().stream().map(NoteDTO::fromNote).collect(Collectors.toList());
-        for(NoteDTO s: dtos){
-            if(s.getId()==noteDTO.getId()){
-                s.setTitle(noteDTO.getTitle());
-                s.setContent(noteDTO.getContent());
-                return s;
-            }
-        }
-        throw new NoteIdException("Old employee with id " + noteDTO.getId() + " not found");
+    public void update(Note note){
+        noteRepository.saveAndFlush(note);
     }
-
 }

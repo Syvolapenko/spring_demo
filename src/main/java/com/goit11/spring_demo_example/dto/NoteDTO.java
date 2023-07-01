@@ -20,7 +20,7 @@ public class NoteDTO {
     }
     public static Note fromDto(NoteDTO noteDTO){
         Note note = new Note();
-        note.setId(note.getId());
+        note.setId(noteDTO.getId());
         note.setTitle(noteDTO.getTitle());
         note.setContent(noteDTO.getContent());
         return note;

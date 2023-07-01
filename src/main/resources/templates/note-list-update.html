@@ -6,8 +6,8 @@
 </head>
 <body>
 <form action="#" th:action="@{/note/editlist}" th:object="${notes}" method="post">
-  <label for="id">ID</label>
-  <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+
+  <input type="hidden" th:field="*{id}" />
   <br/>
   <label for="title">Title</label>
   <input type="text" th:field="*{title}" id="title" placeholder="Title">
