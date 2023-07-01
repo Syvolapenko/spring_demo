@@ -19,10 +19,10 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="note : ${notes}">
-                <td th:text="${note.id}"></td>
-                <td th:text="${note.title}"></td>
-                <td th:text="${note.content}"></td>
+            <tr th:each="noteDTO : ${notes}">
+                <td th:text="${noteDTO.id}"></td>
+                <td th:text="${noteDTO.title}"></td>
+                <td th:text="${noteDTO.content}"></td>
 <!--                <td><a th:href</td>-->
 
             </tr>

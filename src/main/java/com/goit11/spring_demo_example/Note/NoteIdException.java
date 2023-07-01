@@ -1,4 +1,4 @@
-package com.goit11.spring_demo_example.core;
+package com.goit11.spring_demo_example.Note;
 
 public class NoteIdException extends Exception{
     public NoteIdException() {
